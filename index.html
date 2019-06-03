@@ -65,12 +65,22 @@
     <article id="post-shell-manual" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/03/shell-manual/" class="article-date">
-  <time datetime="2019-06-03T09:29:48.539Z" itemprop="datePublished">2019-06-03</time>
+  <time datetime="2019-06-03T09:31:45.018Z" itemprop="datePublished">2019-06-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/03/shell-manual/">Shell Guide</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -101,6 +111,7 @@
 </li>
 <li><p>变量替换</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">如果param没有被设置，则使用default值</span><br><span class="line">$&#123;param-default&#125; 或 $&#123;param:-default&#125;</span><br><span class="line">这两个语法的区别是，只有在param声明了，但是没有值的情况下有区别，其他情况相同</span><br><span class="line">在第二个语法中，param声明了，但是没有值的情况下，也是认为没有被设置的，所以使用default值</span><br><span class="line">在第一个语法中，param声明了，但是没有值的情况下，也是被认为有设置的，所以不使用default值</span><br><span class="line"></span><br><span class="line">如果param没有被设置，则使用default值</span><br><span class="line">$&#123;param=default&#125; 或 $&#123;param:=default&#125;</span><br><span class="line"></span><br><span class="line">如果参数被设置了，使用alt_value替换，否则使用null值</span><br><span class="line">$&#123;param+alt_value&#125; 或 $&#123;param:+alt_value&#125;</span><br><span class="line"></span><br><span class="line">如果param设置了，使用之，否则打印错误err_msg</span><br><span class="line">$&#123;param?err_msg&#125; 或 $&#123;param:?err_msg&#125;</span><br><span class="line"></span><br><span class="line">awk -F&quot;[ ,]&quot; &apos;/level_trigger:rcv:AT\+CMD=.*,&#123;0CC0:\[1\]&#125;\$/||/send_msg:\+RESP:ULK/ &#123;print $5, $(NF-1), $0&#125;&apos; 60z/*.log | awk &apos;&#123;if(NR%2 == 0)print $0&#125;&apos; | sed &apos;s/S//g&apos;</span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ol>
@@ -198,7 +209,7 @@
       <ul>
         
           <li>
-            <a href="/2019/06/03/shell-manual/">(no title)</a>
+            <a href="/2019/06/03/shell-manual/">Shell Guide</a>
           </li>
         
           <li>
