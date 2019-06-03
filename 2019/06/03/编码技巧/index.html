@@ -5,19 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>编码技巧 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="编码技巧Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
+  <meta name="description" content="Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="编码技巧">
 <meta property="og:url" content="http://yoursite.com/2019/06/03/编码技巧/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="编码技巧Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
+<meta property="og:description" content="Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T11:06:46.246Z">
+<meta property="og:updated_time" content="2019-06-03T10:14:07.336Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="编码技巧Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
+<meta name="twitter:title" content="编码技巧">
+<meta name="twitter:description" content="Linux内核中泛型宏定义12345678910#define min(x, y) (&amp;#123;                                  \                       typeof(x) _min1 = (x);         \                       typeof(y) _min2 = (y);         \">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,16 +67,26 @@
         <section id="main"><article id="post-编码技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/03/编码技巧/" class="article-date">
-  <time datetime="2019-06-03T10:11:44.085Z" itemprop="datePublished">2019-06-03</time>
+  <time datetime="2019-06-03T10:14:07.333Z" itemprop="datePublished">2019-06-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编码技巧
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="编码技巧"><a href="#编码技巧" class="headerlink" title="编码技巧"></a>编码技巧</h2><h3 id="Linux内核中泛型宏定义"><a href="#Linux内核中泛型宏定义" class="headerlink" title="Linux内核中泛型宏定义"></a>Linux内核中泛型宏定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#define min(x, y) (&#123;                                  \</span><br><span class="line">                       typeof(x) _min1 = (x);         \</span><br><span class="line">                       typeof(y) _min2 = (y);         \</span><br><span class="line">                       (void) (&amp;_min1 == &amp;_min2);     \</span><br><span class="line">                       _min1 &lt; _min2 ? _min1 : _min2; \</span><br><span class="line">                   &#125;)</span><br><span class="line"></span><br><span class="line">（1）(void) (&amp;_min1 == &amp;_min2);这行的作用是防止传入不同的类型进行比较，比如int和double</span><br><span class="line">（2）(&#123;&#125;)必须配套使用，否则编译报错，因为不符合GNU C扩展表达式的语法</span><br><span class="line">（3）typeof的使用，防止x、y表达式二次计算出现的副作用，比如x++，y++类型的表达式传入</span><br></pre></td></tr></table></figure>
+        <h3 id="Linux内核中泛型宏定义"><a href="#Linux内核中泛型宏定义" class="headerlink" title="Linux内核中泛型宏定义"></a>Linux内核中泛型宏定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#define min(x, y) (&#123;                                  \</span><br><span class="line">                       typeof(x) _min1 = (x);         \</span><br><span class="line">                       typeof(y) _min2 = (y);         \</span><br><span class="line">                       (void) (&amp;_min1 == &amp;_min2);     \</span><br><span class="line">                       _min1 &lt; _min2 ? _min1 : _min2; \</span><br><span class="line">                   &#125;)</span><br><span class="line"></span><br><span class="line">（1）(void) (&amp;_min1 == &amp;_min2);这行的作用是防止传入不同的类型进行比较，比如int和double</span><br><span class="line">（2）(&#123;&#125;)必须配套使用，否则编译报错，因为不符合GNU C扩展表达式的语法</span><br><span class="line">（3）typeof的使用，防止x、y表达式二次计算出现的副作用，比如x++，y++类型的表达式传入</span><br></pre></td></tr></table></figure>
 
 <p>复合语句需要封装在小括号的内部，参见<a href="https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html#Statements-and-Declarations-in-Expressions" target="_blank" rel="noopener">GNU C手册</a>上的解释。这里摘录部分如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3.18 Statements and Declarations in Expressions</span><br><span class="line">As a GNU C extension, you can build an expression using compound statement enclosed in parentheses. This allows you to included loops, switches, and local variables within an expression.</span><br></pre></td></tr></table></figure>
@@ -228,7 +238,7 @@
       <ul>
         
           <li>
-            <a href="/2019/06/03/编码技巧/">(no title)</a>
+            <a href="/2019/06/03/编码技巧/">编码技巧</a>
           </li>
         
           <li>
